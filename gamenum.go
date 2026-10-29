@@ -11,8 +11,8 @@ import (
 )
 
 func main() {
-	target := rand.Intn(100)
-	attempt := 10
+	target := rand.Intn(100) + 1 // Создает число от 1 до 100 включительно
+	attempt := 10 // 10 Попыток дается
 
 	fmt.Println("--------Игра угадай число!--------")
 
@@ -24,12 +24,12 @@ func main() {
 
 		fmt.Println("У вас есть: ", attempt, "Попыток")
 
-		reader := bufio.NewReader(os.Stdin)
+		reader := bufio.NewReader(os.Stdin) // Делает обертку потока ввода 
 		fmt.Print("Введите число: ")
-		input, err := reader.ReadString('\n')
+		input, err := reader.ReadString('\n') // читает с буфера введенные сообщения до \n тоесть до enter
 
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal(err) // отключает программу если error ошибка не равно пустоте тоесть если там есть ошибка выключает программу
 		}
 		input = strings.TrimSpace(input)
 		num, err := strconv.Atoi(input)
